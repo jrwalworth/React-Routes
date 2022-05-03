@@ -1,40 +1,25 @@
 import React from 'react';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link
-} from 'react-router-dom';
+import { Routes,Route,Link } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
+import Home from './components/Home';
+import Param from './components/Param';
+import Color from './components/Color';
+import Colors from './components/Colors';
 
-const Home = (props) => {
-  return (
-    <div>
-      <h1 style={{color:'red'}}>Home Page</h1>
-      <Link to={'/about'}>About</Link>
-    </div>
-  )};
-
-const About = (props) => {
-  return (
-    <div>
-      <h1 style={{color:'blue'}}>About Page</h1>
-      <Link to={'/'}>Go Home</Link>
-    </div>
-    
-  )};
-  
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <h1>Routing Example</h1>
+    <div className='App'>
+      <Header />
       <Routes>
         <Route exact path='/' element={<Home/>} />
-        <Route path='/about' element={<About/>} />
+        <Route path='/:param' element={<Param />} />
+        <Route path='/:param/:color' element={<Color />} />
+        <Route path='/:param/:color/:bgColor' element={<Colors />} />
       </Routes>
-    </BrowserRouter>
+    </div>
   );
 }
 
